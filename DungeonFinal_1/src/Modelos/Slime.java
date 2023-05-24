@@ -4,7 +4,6 @@
  */
 package Modelos;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -15,10 +14,11 @@ import javax.swing.ImageIcon;
  */
 public class Slime extends Monster {
     private Dungeon dun = new Dungeon();
+    private Image slimeImage;
     
     public Slime(int x, int y, Yellow yellow) {
         super(x, y, yellow);
-       
+        slimeImage = new ImageIcon(getClass().getResource("POO(Slime-up-right).png")).getImage();
     }
 
     /**
@@ -33,6 +33,20 @@ public class Slime extends Monster {
      */
     public void setDun(Dungeon dun) {
         this.dun = dun;
+    }
+
+    /**
+     * @return the slimeImage
+     */
+    public Image getSlimeImage() {
+        return slimeImage;
+    }
+
+    /**
+     * @param slimeImage the slimeImage to set
+     */
+    public void setSlimeImage(Image slimeImage) {
+        this.slimeImage = slimeImage;
     }
 
     @Override
@@ -67,9 +81,7 @@ public class Slime extends Monster {
     }
     @Override
     public void draw(Graphics g) {
-        ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Slime-up-right).png"));         
-        g.setColor(new Color(128,64,0));         
-        g.drawImage(imagen.getImage(), getX(), getY(), getSize(), getSize(), null);
+        g.drawImage(getSlimeImage(), getX(), getY(), getSize(), getSize(), null);
     }
 }
 

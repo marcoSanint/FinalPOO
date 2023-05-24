@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
  *
  * @author Marco Sanint
  */
-public final class Dungeon extends Sprite implements Drawable, Dimensionable {
+public final class Dungeon implements Drawable, Dimensionable{
     private int row = 0;
     private int column = 0;
     private int numRows = 15;
@@ -33,7 +33,6 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
     private List<Key> keys;
     
     public Dungeon() {
-        super(0, 0);
         //yellow = new Yellow(2*Size, 2*Size);
         //yellow.setArea(this);
         //yellow.setDrawable(this);
