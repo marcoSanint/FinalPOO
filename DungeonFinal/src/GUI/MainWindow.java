@@ -65,7 +65,7 @@ public class MainWindow extends javax.swing.JFrame implements Drawable, Dimensio
      */
     public static void main(String args[]) {
         MainWindow window = new MainWindow();
-        Dungeon dungeon = new Dungeon(600, 1000);
+        Dungeon dungeon = new Dungeon();
         
         window.setDungeon(dungeon);
 //        garden.setWidth(window.getWidth());

@@ -25,6 +25,7 @@ public final class Dungeon implements Drawable, Dimensionable{
     private int level = 1;
     private int score = 0;
     private Image wallImage = new ImageIcon(getClass().getResource("POO(Wall).png")).getImage();
+    private Drawable drawable;
     
     private Yellow yellow;
     private List<Monster> monsters;
@@ -59,7 +60,7 @@ public final class Dungeon implements Drawable, Dimensionable{
         return dungeon;
     }
     
-    public void paint(Graphics g){
+    public void draw(Graphics g){
         
         int [][]dungeon = getDungeon();
         
@@ -310,5 +311,19 @@ public final class Dungeon implements Drawable, Dimensionable{
     @Override
     public void redraw(int x, int y, int width, int height) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    /**
+     * @return the drawable
+     */
+    public Drawable getDrawable() {
+        return drawable;
+    }
+
+    /**
+     * @param drawable the drawable to set
+     */
+    public void setDrawable(Drawable drawable) {
+        this.drawable = drawable;
     }
 }
