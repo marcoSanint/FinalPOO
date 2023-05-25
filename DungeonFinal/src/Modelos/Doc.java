@@ -4,6 +4,7 @@
  */
 package Modelos;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -18,7 +19,6 @@ public class Doc extends Monster {
     
     public Doc(int x, int y, Yellow yellow) {
         super(x, y, yellow);
-        docImage = new ImageIcon(getClass().getResource("POO(Doc-U-R).png")).getImage();
     }
 
     /**
@@ -87,6 +87,8 @@ public class Doc extends Monster {
 
     @Override
     public void draw(Graphics g) {
-        g.drawImage(docImage, getX(), getY(), getSize(), getSize(), null);
+        ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Doc-U-R).png"));         
+        g.setColor(new Color(128,64,0));         
+        g.drawImage(imagen.getImage(), getX(), getY(), getSize(), getSize(), null);
     }
 }

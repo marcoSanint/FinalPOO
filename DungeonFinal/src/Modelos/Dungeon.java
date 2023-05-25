@@ -24,7 +24,6 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
     private int Size = 40;
     private int level = 1;
     private int score = 0;
-    private Image wallImage = new ImageIcon(getClass().getResource("POO(Wall).png")).getImage();
     private Drawable drawable;
     
     private Yellow yellow;
@@ -71,10 +70,9 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
         for(setRow(0); getRow() < getNumRows(); setRow(getRow() + 1)){
             for(setColumn(0); getColumn() < getNumColumns(); setColumn(getColumn() + 1)){
                 if (dungeon[getRow()][getColumn()] == 1){
-                    g.setColor(Color.BLUE);
-                    g.fillRect(getColumn()*40, getRow()*40, getSize(), getSize());
-                    g.setColor(Color.BLACK);
-                    g.drawRect(getColumn()*40, getRow()*40, getSize(), getSize());
+                    ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Wall).png"));         
+                    g.setColor(new Color(128,64,0));         
+                    g.drawImage(imagen.getImage(), getX(), getY(), getSize(), getSize(), null);
                 }
             }
         }
