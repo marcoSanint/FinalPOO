@@ -15,10 +15,12 @@ import javax.swing.ImageIcon;
 public class Yellow extends Sprite{
     private int lives = 3;
     private int numKeys = 0;
-    
-    public Yellow(int x, int y) {
-        super(x, y);
+
+    public Yellow(int x, int y, int width, int height) {
+        super(x, y, width, height);
     }
+    
+    
     
     public void drawLives(Graphics g) {
         
@@ -65,8 +67,7 @@ public class Yellow extends Sprite{
 
     @Override
     public void draw(Graphics g) {
-        ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Main-up-right).png"));         
-        g.setColor(new Color(128,64,0));         
-        g.drawImage(imagen.getImage(), x, y, getSize(), getSize(), null);
+        g.setColor(Color.YELLOW);
+        g.fillRect(getX(), getY(), getWidth(), getHeight());
     }
 }

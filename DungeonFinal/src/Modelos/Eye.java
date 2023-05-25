@@ -16,8 +16,8 @@ import javax.swing.ImageIcon;
 public class Eye extends Monster {
     private Image eyeImage;
 
-    public Eye(int x, int y, Yellow yellow) {
-        super(x, y, yellow);
+    public Eye(int x, int y, int width, int height, Yellow yellow) {
+        super(x, y, width, height);
     }
 
     // Métodos Getter y Setter para las variables miembro
@@ -50,8 +50,8 @@ public class Eye extends Monster {
             directionX = (getX() < yellowX) ? 1 : -1;
         }
 
-        int nextX = getX() + directionX * getStep();
-        int nextY = getY() + directionY * getStep();
+        int nextX = getX() + directionX * 40;
+        int nextY = getY() + directionY * 40;
 
 //        if (dungeon[nextY / 40][nextX / 40] != 1) {
 //            setX(nextX);
@@ -67,6 +67,6 @@ public class Eye extends Monster {
     public void draw(Graphics g) {
         ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Eye-down-right).png"));         
         g.setColor(new Color(128,64,0));         
-        g.drawImage(imagen.getImage(), getX(), getY(), getSize(), getSize(), null);
+        g.drawImage(imagen.getImage(), getX(), getY(), 40, 40, null);
     }
 }

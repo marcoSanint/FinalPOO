@@ -12,8 +12,8 @@ import java.awt.Graphics;
  */
 public abstract class Potion extends Sprite{
 
-    public Potion(int x, int y) {
-        super(x, y);
+    public Potion(int x, int y, int width, int height) {
+        super(x, y, width, height);
     }
 
     @Override

@@ -15,8 +15,8 @@ import javax.swing.ImageIcon;
  */
 public class Doc extends Monster {
     
-    public Doc(int x, int y, Yellow yellow) {
-        super(x, y, yellow);
+    public Doc(int x, int y, int width, int height, Yellow yellow) {
+        super(x, y, width, height);
     }  
 
 
@@ -42,8 +42,8 @@ public class Doc extends Monster {
         }
 
         // Calcular las coordenadas del siguiente movimiento del fantasma
-        int nextX = getX() + directionX * getStep();
-        int nextY = getY() + directionY * getStep();
+        int nextX = getX() + directionX * 40;
+        int nextY = getY() + directionY * 40;
 
         // Verificar si el siguiente movimiento del fantasma es válido (no choca con una pared)
 //        if (dungeon[nextY / 40][nextX / 40] != 1) {
@@ -59,6 +59,6 @@ public class Doc extends Monster {
     public void draw(Graphics g) {
         ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Doc-U-R).png"));         
         g.setColor(new Color(128,64,0));         
-        g.drawImage(imagen.getImage(), getX(), getY(), getSize(), getSize(), null);
+        g.drawImage(imagen.getImage(), getX(), getY(), 40, 40, null);
     }
 }

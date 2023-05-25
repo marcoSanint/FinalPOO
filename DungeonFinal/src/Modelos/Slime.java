@@ -15,8 +15,8 @@ import javax.swing.ImageIcon;
  */
 public class Slime extends Monster {
     
-    public Slime(int x, int y, Yellow yellow) {
-        super(x, y, yellow);
+    public Slime(int x, int y, int width, int height, Yellow yellow) {
+        super(x, y, width, height);
         System.out.println("ddddd");
     }
 
@@ -32,13 +32,13 @@ public class Slime extends Monster {
 
         // Mover el fantasma en la dirección aleatoria
         if (randomDirection == 0) { // Izquierda
-            nextX -= getStep();
+            nextX -= 40;
         } else if (randomDirection == 1) { // Derecha
-            nextX += getStep();
+            nextX += 40;
         } else if (randomDirection == 2) { // Arriba
-            nextY -= getStep();
+            nextY -= 40;
         } else if (randomDirection == 3) { // Abajo
-            nextY += getStep();
+            nextY += 40;
         }
 
         // Verificar si el siguiente movimiento del fantasma es válido (no choca con una pared)
@@ -54,7 +54,7 @@ public class Slime extends Monster {
     public void draw(Graphics g) {
         System.out.println("ddd");
         g.setColor(Color.red);
-        g.fillRect(x, y, Size, Size);
+        g.fillRect(getX(), getY(), 40, 40);
 //        ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Slime-up-right).png"));         
 //        g.setColor(new Color(128,64,0));         
 //        g.drawImage(imagen.getImage(), getX(), getY(), getSize(), getSize(), null);

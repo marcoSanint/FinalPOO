@@ -19,8 +19,8 @@ public class Spider extends Monster {
     private int initialX;
     private int initialY;
 
-    public Spider(int x, int y, Yellow yellow) {
-        super(x, y, yellow);
+    public Spider(int x, int y, int width, int height, Yellow yellow) {
+        super(x, y, width, height);
         roamDirection = 0; // Comenzar moviéndose hacia la derecha
         initialX = x;
         initialY = y;
@@ -75,8 +75,8 @@ public class Spider extends Monster {
                 break;
         }
 
-        int nextX = getX() + directionX * getStep();
-        int nextY = getY() + directionY * getStep();
+        int nextX = getX() + directionX * 40;
+        int nextY = getY() + directionY * 40;
 
         // Verificar si el siguiente movimiento del monstruo es válido
 //        if (dungeon[nextY / 40][nextX / 40] != 1) {
@@ -97,7 +97,7 @@ public class Spider extends Monster {
     public void draw(Graphics g) {
         ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Spider-up-right).png"));         
         g.setColor(new Color(128,64,0));         
-        g.drawImage(imagen.getImage(), getX(), getY(), getSize(), getSize(), null);
+        g.drawImage(imagen.getImage(), getX(), getY(), 40, 40, null);
     }
 
 }

@@ -12,8 +12,8 @@ package Modelos;
 public abstract class Monster extends Sprite{
     private Yellow yellow;
 
-    public Monster(int x, int y, Yellow yellow) {
-        super(x, y);
+    public Monster(int x, int y, int width, int height) {
+        super(x, y, width, height);
         this.yellow = yellow;
         System.out.println("dd");
     }

@@ -11,7 +11,7 @@ package Modelos;
 public class HealPotion extends Potion{
 
     public HealPotion(int x, int y, int width, int height) {
-        super(x, y);
+        super(x, y, width, height);
     }
     
 }

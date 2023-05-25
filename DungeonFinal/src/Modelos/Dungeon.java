@@ -27,15 +27,17 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
     private Drawable drawable;
     
     private Yellow yellow;
+    private Slime slime;
     private List<Monster> monsters = new ArrayList<>();
     private List<Potion> potions;
     private List<Key> keys;
     
-    public Dungeon() {
-        super(0, 0);
-        yellow = new Yellow(2*Size, 2*Size);
+    public Dungeon(int x, int y, int width, int height) {
+        super(0, 0, 25*40, 15*40);
+        yellow = new Yellow(6*40, 2*40, 40, 40);
         yellow.setArea(this);
         yellow.setDrawable(this);
+        slime = new Slime(2*40, 2*40, 40, 40, yellow);
         generateMonsters();
     }
 
@@ -79,9 +81,7 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
             
         }
         yellow.draw(g);
-        for( Monster a: monsters){
-            a.draw(g);
-        }
+        slime.draw(g);
         
     }
     
@@ -91,7 +91,7 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
     public void generateMonsters() {
         int x = (int) (Math.random()* getWidth()) - 40;
         int y = (int) (Math.random()* getHeight()) - 40;
-        Slime slime = new Slime(x, y, yellow);
+        Slime slime = new Slime(x, y, 40, 40, yellow);
         monsters.add(slime);
         System.out.println("d");
     }

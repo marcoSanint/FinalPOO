@@ -13,28 +13,20 @@ import java.awt.Graphics;
 public abstract class Sprite {
     protected int x;
     protected int y;
-    protected int Size;
-    protected int step = 40;
+    protected int width;
+    protected int height;
     
     protected Dimensionable area;
     protected Drawable drawable;
-
-    public Sprite(int x, int y) {
-        this.x = x;
-        this.y = y;
+    
+    public Sprite(int x, int y, int width, int height)
+    {
+        setX(x);
+        setY(y);
+        setWidth(width);
+        setHeight(height);
     }
     
-        public boolean checkCollision(Sprite sprite)
-    {
-        if(this.getX() < sprite.getX() + sprite.getSize() &&
-           this.getX() + this.getSize() > sprite.getX() &&
-           this.getY() < sprite.getY() + sprite.getSize() &&
-           this.getSize() + this.getY() > sprite.getY())
-            return true;
-        
-        return false;
-    }
-
     public abstract void draw(Graphics g);
 
     public int getX() {
@@ -53,14 +45,22 @@ public abstract class Sprite {
         this.y = y;
     }
 
-
-    /**
-     * @return the step
-     */
-    public int getStep() {
-        return step;
+    public int getWidth() {
+        return width;
     }
-    
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
     public void setArea(Dimensionable area) {
         this.area = area;
     }
@@ -68,39 +68,15 @@ public abstract class Sprite {
     public void setDrawable(Drawable drawable) {
         this.drawable = drawable;
     }
-    
-    /**
-     * @param step the step to set
-     */
-    public void setStep(int step) {
-        this.step = step;
-    }
 
-    /**
-     * @return the area
-     */
-    public Dimensionable getArea() {
-        return area;
-    }
-
-    /**
-     * @return the drawable
-     */
-    public Drawable getDrawable() {
-        return drawable;
-    }
-
-    /**
-     * @return the Size
-     */
-    public int getSize() {
-        return Size;
-    }
-
-    /**
-     * @param Size the Size to set
-     */
-    public void setSize(int Size) {
-        this.Size = Size;
+    public boolean checkCollision(Sprite sprite)
+    {
+        if(this.getX() < sprite.getX() + sprite.getWidth() &&
+           this.getX() + this.getWidth() > sprite.getX() &&
+           this.getY() < sprite.getY() + sprite.getHeight() &&
+           this.getHeight() + this.getY() > sprite.getY())
+            return true;
+        
+        return false;
     }
 }

@@ -15,8 +15,8 @@ import java.util.Random;
  */
 public class Key extends Sprite {
 
-    public Key(int x, int y) {
-        super(x, y);
+    public Key(int x, int y, int width, int height) {
+        super(x, y, width, height);
     }
 
     public static List<Key> generateKeys(int[][] dungeon) {
@@ -29,8 +29,8 @@ public class Key extends Sprite {
             int y = random.nextInt(dungeon[0].length);
 
             if (dungeon[x][y] == 0) {
-                Key key = new Key(x, y);
-                keys.add(key);
+//                Key key = new Key(x, y);
+//                keys.add(key);
                 dungeon[x][y] = 2; // Mark the position as occupied by a key
                 count++;
             }
