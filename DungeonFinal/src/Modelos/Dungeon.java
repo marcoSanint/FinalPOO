@@ -66,9 +66,9 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
         g.setColor(new Color(219, 94, 240, 255));
         g.fillRect(0, 0, getNumColumns()*getSize(), getNumRows()*getSize());
         
-        for(row = 0; row < numRows; row++){
-            for(column = 0; column < numColumns; column++){
-                if (dungeon[row][column] == 1){
+        for(row = 0; getRow() < getNumRows(); setRow(getRow() + 1)){
+            for(setColumn(0); getColumn() < getNumColumns(); setColumn(getColumn() + 1)){
+                if (dungeon[getRow()][getColumn()] == 1){
 //                    g.setColor(Color.BLUE);
 //                    g.fillRect(getColumn()*40, getRow()*40, getSize(), getSize());
 //                    g.setColor(Color.BLACK);
