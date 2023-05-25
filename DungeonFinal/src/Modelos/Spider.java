@@ -4,6 +4,7 @@
  */
 package Modelos;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -21,7 +22,6 @@ public class Spider extends Monster {
 
     public Spider(int x, int y, Yellow yellow) {
         super(x, y, yellow);
-        roamerImage = new ImageIcon(getClass().getResource("POO(Roamer-up-right).png")).getImage();
         roamDirection = 0; // Comenzar moviéndose hacia la derecha
         initialX = x;
         initialY = y;
@@ -103,7 +103,9 @@ public class Spider extends Monster {
        
     @Override
     public void draw(Graphics g) {
-        g.drawImage(getRoamerImage(), getX(), getY(), getSize(), getSize(), null);
+        ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Spider-up-right).png"));         
+        g.setColor(new Color(128,64,0));         
+        g.drawImage(imagen.getImage(), getX(), getY(), getSize(), getSize(), null);
     }
 
 }

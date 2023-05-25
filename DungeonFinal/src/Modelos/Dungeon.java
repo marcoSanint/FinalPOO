@@ -24,7 +24,6 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
     private int Size = 40;
     private int level = 1;
     private int score = 0;
-    private Image wallImage = new ImageIcon(getClass().getResource("POO(Wall).png")).getImage();
     private Drawable drawable;
     
     private Yellow yellow;
@@ -37,9 +36,8 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
         yellow = new Yellow(2*Size, 2*Size);
         yellow.setArea(this);
         yellow.setDrawable(this);
-        
-        //keys = generateRandomKeys(4);
-        monsters = generateMonsters();
+        monsters = new ArrayList<>();
+        //generateRandomKeys(numRows);
     }
     
     public int[][] getDungeon(){
@@ -71,54 +69,43 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
         for(setRow(0); getRow() < getNumRows(); setRow(getRow() + 1)){
             for(setColumn(0); getColumn() < getNumColumns(); setColumn(getColumn() + 1)){
                 if (dungeon[getRow()][getColumn()] == 1){
-                    g.setColor(Color.BLUE);
-                    g.fillRect(getColumn()*40, getRow()*40, getSize(), getSize());
-                    g.setColor(Color.BLACK);
-                    g.drawRect(getColumn()*40, getRow()*40, getSize(), getSize());
+//                    g.setColor(Color.BLUE);
+//                    g.fillRect(getColumn()*40, getRow()*40, getSize(), getSize());
+//                    g.setColor(Color.BLACK);
+//                    g.drawRect(getColumn()*40, getRow()*40, getSize(), getSize());
+                    ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Wall).png"));         
+                    g.setColor(new Color(128,64,0));         
+                    g.drawImage(imagen.getImage(), getColumn()*40, getRow()*40, getSize(), getSize(), null);
                 }
             }
         }
     }
     
-    //Confirmar que no hay ninguna llave en la posicion
-    private boolean keyOnSlot(List<Key> keys, int x, int y) {
-        for (Key key : keys) {
-            if (key.getX() == x && key.getY() == y) {
-                return true;
-            }
-        }
-        return false;
-    }
     
     //Repartir de forma aleatoria las llaves en los espacions vacios
-    private List<Key> generateRandomKeys(int numKeys) {
-        List<Key> keys = new ArrayList<>();
-        Random random = new Random();
-
-        int count = 0;
-        while (count < numKeys) {
-            int x = random.nextInt(getNumColumns());
-            int y = random.nextInt(getNumRows());
-
-            if (getDungeon()[y][x] == 0 && !keyOnSlot(keys, x, y)) {
-                keys.add(new Key(x, y));
-                count++;
-            }
-        }
-
-        return keys;
-    }
+//    public void generateRandomKeys(int numKeys) {
+//        Random random = new Random();
+//        int count = 0;
+//        while (count < numKeys) {
+//            int x = random.nextInt(getNumColumns());
+//            int y = random.nextInt(getNumRows());
+//
+//            if (getDungeon()[y][x] == 0) {
+//                keys.add(new Key(x, y));
+//                count++;
+//            }
+//        }
+//
+//    }
     
     //Repartir los mosntruos
-    private List<Monster> generateMonsters() {
-        List<Monster> monsters = new ArrayList<>();
+    public void generateMonsters() {
 
         monsters.add(new Slime(8*Size, 5*Size, yellow));
         monsters.add(new Spider(12*Size, 10*Size, yellow));
         monsters.add(new Eye(2*Size, 9*Size, yellow));
         monsters.add(new Doc(5*Size, 7*Size, yellow));
 
-        return monsters;
     }
     
     //Agregar habilidad al laberinto
@@ -286,22 +273,22 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
 
     @Override
     public int getX() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return row;
     }
 
     @Override
     public int getY() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return column;
     }
 
     @Override
     public int getWidth() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return Size;
     }
 
     @Override
     public int getHeight() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return Size;
     }
     
     @Override

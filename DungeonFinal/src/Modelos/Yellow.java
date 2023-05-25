@@ -6,7 +6,6 @@ package Modelos;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
@@ -14,11 +13,9 @@ import javax.swing.ImageIcon;
  * @author Marco Sanint
  */
 public class Yellow extends Sprite{
-    private Dungeon dun = new Dungeon();
     private int lives = 3;
     private int numKeys = 0;
-    private Image yellowImage= new ImageIcon(getClass().getResource("POO(Main-up-right).png")).getImage();
-
+    
     public Yellow(int x, int y) {
         super(x, y);
     }
@@ -41,24 +38,6 @@ public class Yellow extends Sprite{
     public void gotKey(){
         setNumKeys(getNumKeys() + 1);
     }
-
-    /**
-     * @return the dun
-     */
-    public Dungeon getDun() {
-        return dun;
-    }
-
-    /**
-     * @param dun the dun to set
-     */
-    public void setDun(Dungeon dun) {
-        this.dun = dun;
-    }
-
-    /**
-     * @return the lives
-     */
     public int getLives() {
         return lives;
     }
@@ -84,22 +63,10 @@ public class Yellow extends Sprite{
         this.numKeys = numKeys;
     }
 
-    /**
-     * @return the yellowImage
-     */
-    public Image getYellowImage() {
-        return yellowImage;
-    }
-
-    /**
-     * @param yellowImage the yellowImage to set
-     */
-    public void setYellowImage(Image yellowImage) {
-        this.yellowImage = yellowImage;
-    }
-
     @Override
     public void draw(Graphics g) {
-        g.drawImage(yellowImage, getX(), getY(), getSize(), getSize(), null);
+        ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Main-up-right).png"));         
+        g.setColor(new Color(128,64,0));         
+        g.drawImage(imagen.getImage(), getX(), getY(), getSize(), getSize(), null);
     }
 }

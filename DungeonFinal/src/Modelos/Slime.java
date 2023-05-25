@@ -14,62 +14,55 @@ import javax.swing.ImageIcon;
  * @author Marco Sanint
  */
 public class Slime extends Monster {
-    private Dungeon dun = new Dungeon();
     
     public Slime(int x, int y, Yellow yellow) {
         super(x, y, yellow);
        
     }
 
-    /**
-     * @return the dun
-     */
-    public Dungeon getDun() {
-        return dun;
-    }
-
-    /**
-     * @param dun the dun to set
-     */
-    public void setDun(Dungeon dun) {
-        this.dun = dun;
-    }
+//   @Override
+//    public void move() {
+//        int[][] dungeon = getYellow().getDun().getDungeon();
+//
+//        // Generar un movimiento aleatorio para el fantasma verde
+//        int randomDirection = (int) (Math.random() * 4); // Generar un número aleatorio entre 0 y 3
+//
+//        int nextX = getX();
+//        int nextY = getY();
+//
+//        // Mover el fantasma en la dirección aleatoria
+//        if (randomDirection == 0) { // Izquierda
+//            nextX -= getStep();
+//        } else if (randomDirection == 1) { // Derecha
+//            nextX += getStep();
+//        } else if (randomDirection == 2) { // Arriba
+//            nextY -= getStep();
+//        } else if (randomDirection == 3) { // Abajo
+//            nextY += getStep();
+//        }
+//
+//        // Verificar si el siguiente movimiento del fantasma es válido (no choca con una pared)
+//        if (dungeon[nextY / 40][nextX / 40] != 1) {
+//            setX(nextX);
+//            setY(nextY);
+//        }
+//        if (getX() == getYellow().getX() && getY() == getYellow().getY()) {
+//            getYellow().loseLife();
+//        }
+//    }
+//    @Override
+//    public void draw(Graphics g) {
+//        ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Slime-up-right).png"));         
+//        g.setColor(new Color(128,64,0));         
+//        g.drawImage(imagen.getImage(), getX(), getY(), getSize(), getSize(), null);
+//    }
 
     @Override
     public void move() {
-        int[][] dungeon = getYellow().getDun().getDungeon();
-
-        // Generar un movimiento aleatorio para el fantasma verde
-        int randomDirection = (int) (Math.random() * 4); // Generar un número aleatorio entre 0 y 3
-
-        int nextX = getX();
-        int nextY = getY();
-
-        // Mover el fantasma en la dirección aleatoria
-        if (randomDirection == 0) { // Izquierda
-            nextX -= getStep();
-        } else if (randomDirection == 1) { // Derecha
-            nextX += getStep();
-        } else if (randomDirection == 2) { // Arriba
-            nextY -= getStep();
-        } else if (randomDirection == 3) { // Abajo
-            nextY += getStep();
-        }
-
-        // Verificar si el siguiente movimiento del fantasma es válido (no choca con una pared)
-        if (dungeon[nextY / 40][nextX / 40] != 1) {
-            setX(nextX);
-            setY(nextY);
-        }
-        if (getX() == getYellow().getX() && getY() == getYellow().getY()) {
-            getYellow().loseLife();
-        }
     }
+
     @Override
     public void draw(Graphics g) {
-        ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Slime-up-right).png"));         
-        g.setColor(new Color(128,64,0));         
-        g.drawImage(imagen.getImage(), getX(), getY(), getSize(), getSize(), null);
     }
 }
 

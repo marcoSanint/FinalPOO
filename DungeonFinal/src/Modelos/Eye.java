@@ -4,6 +4,7 @@
  */
 package Modelos;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -18,7 +19,6 @@ public class Eye extends Monster {
 
     public Eye(int x, int y, Yellow yellow) {
         super(x, y, yellow);
-        eyeImage = new ImageIcon(getClass().getResource("POO(Eye-down-right).png")).getImage();
     }
 
     // Métodos Getter y Setter para las variables miembro
@@ -73,6 +73,8 @@ public class Eye extends Monster {
     
         @Override
     public void draw(Graphics g) {
-        g.drawImage(eyeImage, getX(), getY(), getSize(), getSize(), null);
+        ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Eye-down-right).png"));         
+        g.setColor(new Color(128,64,0));         
+        g.drawImage(imagen.getImage(), getX(), getY(), getSize(), getSize(), null);
     }
 }
