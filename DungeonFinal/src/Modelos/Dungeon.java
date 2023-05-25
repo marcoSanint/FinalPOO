@@ -58,6 +58,24 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
         };
         return dungeon;
     }
+//    public int[][] getDungeon(){
+//        int dungeon[][] = 
+//        {   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+//            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//            {1,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//            {1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1},
+//            {1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1},
+//            {1,0,1,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,1},
+//            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
+//            {1,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1,0,0,0,0,0,1},
+//            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
+//            {1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//            {1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//            {1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
+//            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+//        };
+//        return dungeon;
+//    }
     
     public void draw(Graphics g){
         
@@ -65,20 +83,23 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
         
         g.setColor(new Color(219, 94, 240, 255));
         g.fillRect(0, 0, getNumColumns()*getSize(), getNumRows()*getSize());
-        
-        for(row = 0; getRow() < getNumRows(); setRow(getRow() + 1)){
-            for(setColumn(0); getColumn() < getNumColumns(); setColumn(getColumn() + 1)){
-                if (dungeon[getRow()][getColumn()] == 1){
-//                    g.setColor(Color.BLUE);
-//                    g.fillRect(getColumn()*40, getRow()*40, getSize(), getSize());
-//                    g.setColor(Color.BLACK);
-//                    g.drawRect(getColumn()*40, getRow()*40, getSize(), getSize());
-                    ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Wall).png"));         
-                    g.setColor(new Color(128,64,0));         
-                    g.drawImage(imagen.getImage(), getColumn()*40, getRow()*40, getSize(), getSize(), null);
+        try{
+            for(row = 0; row < numRows; row++){
+                for(column=0; column < numColumns; column ++){
+                    if (dungeon[row][column] == 1){
+    //                    g.setColor(Color.BLUE);
+    //                    g.fillRect(getColumn()*40, getRow()*40, getSize(), getSize());
+    //                    g.setColor(Color.BLACK);
+    //                    g.drawRect(getColumn()*40, getRow()*40, getSize(), getSize());
+                        ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Wall).png"));         
+                        g.setColor(new Color(128,64,0));         
+                        g.drawImage(imagen.getImage(), column*40, row*40, Size, Size, null);
+                    }
                 }
             }
+        }catch(ArrayIndexOutOfBoundsException a){
         }
+        
     }
     
     
