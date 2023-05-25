@@ -34,9 +34,9 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
     
     public Dungeon() {
         super(0, 0);
-        //yellow = new Yellow(2*Size, 2*Size);
-        //yellow.setArea(this);
-        //yellow.setDrawable(this);
+        yellow = new Yellow(2*Size, 2*Size);
+        yellow.setArea(this);
+        yellow.setDrawable(this);
         
         //keys = generateRandomKeys(4);
         monsters = generateMonsters();
