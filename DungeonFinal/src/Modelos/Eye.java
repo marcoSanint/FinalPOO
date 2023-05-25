@@ -14,7 +14,6 @@ import javax.swing.ImageIcon;
  * @author Marco Sanint
  */
 public class Eye extends Monster {
-    private Dungeon dun = new Dungeon();
     private Image eyeImage;
 
     public Eye(int x, int y, Yellow yellow) {
@@ -22,13 +21,6 @@ public class Eye extends Monster {
     }
 
     // Métodos Getter y Setter para las variables miembro
-    public Dungeon getDun() {
-        return dun;
-    }
-
-    public void setDun(Dungeon dun) {
-        this.dun = dun;
-    }
 
     public Image getEyeImage() {
         return eyeImage;
@@ -40,7 +32,7 @@ public class Eye extends Monster {
     
         @Override
     public void move() {
-        int[][] dungeon = getDun().getDungeon();
+        //int[][] dungeon = getDun().getDungeon();
         Yellow yellow = getYellow();
 
         int directionX = 0;
@@ -61,10 +53,10 @@ public class Eye extends Monster {
         int nextX = getX() + directionX * getStep();
         int nextY = getY() + directionY * getStep();
 
-        if (dungeon[nextY / 40][nextX / 40] != 1) {
-            setX(nextX);
-            setY(nextY);
-        }
+//        if (dungeon[nextY / 40][nextX / 40] != 1) {
+//            setX(nextX);
+//            setY(nextY);
+//        }
 
         if (getX() == yellowX && getY() == yellowY) {
             yellow.loseLife();

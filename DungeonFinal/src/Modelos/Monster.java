@@ -15,6 +15,7 @@ public abstract class Monster extends Sprite{
     public Monster(int x, int y, Yellow yellow) {
         super(x, y);
         this.yellow = yellow;
+        System.out.println("dd");
     }
 
     public abstract void move();

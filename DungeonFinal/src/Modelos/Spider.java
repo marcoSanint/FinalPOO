@@ -14,7 +14,6 @@ import javax.swing.ImageIcon;
  * @author Marco Sanint
  */
 public class Spider extends Monster {
-    private Dungeon dun = new Dungeon();
     private Image roamerImage;
     private int roamDirection; // Dirección de movimiento del Roamer (0: derecha, 1: abajo, 2: izquierda, 3: arriba)
     private int initialX;
@@ -28,13 +27,6 @@ public class Spider extends Monster {
     }
 
     // Métodos Getter y Setter para las variables miembro
-    public Dungeon getDun() {
-        return dun;
-    }
-
-    public void setDun(Dungeon dun) {
-        this.dun = dun;
-    }
 
     public Image getRoamerImage() {
         return roamerImage;
@@ -62,7 +54,7 @@ public class Spider extends Monster {
     
     @Override
     public void move() {
-        int[][] dungeon = getDun().getDungeon();
+        //int[][] dungeon = getDun().getDungeon();
 
         int directionX = 0;
         int directionY = 0;
@@ -87,13 +79,13 @@ public class Spider extends Monster {
         int nextY = getY() + directionY * getStep();
 
         // Verificar si el siguiente movimiento del monstruo es válido
-        if (dungeon[nextY / 40][nextX / 40] != 1) {
-            setX(nextX);
-            setY(nextY);
-        } else {
-            // Si el siguiente movimiento no es válido, cambiar la dirección de movimiento en sentido horario
-            roamDirection = (roamDirection + 1) % 4;
-        }
+//        if (dungeon[nextY / 40][nextX / 40] != 1) {
+//            setX(nextX);
+//            setY(nextY);
+//        } else {
+//            // Si el siguiente movimiento no es válido, cambiar la dirección de movimiento en sentido horario
+//            roamDirection = (roamDirection + 1) % 4;
+//        }
 
         // Si el Roamer ha rodeado todo el mapa y ha vuelto a su posición inicial, el jugador pierde una vida
         if (getX() == initialX && getY() == initialY) {

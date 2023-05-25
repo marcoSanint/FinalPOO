@@ -67,6 +67,6 @@ public class Yellow extends Sprite{
     public void draw(Graphics g) {
         ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Main-up-right).png"));         
         g.setColor(new Color(128,64,0));         
-        g.drawImage(imagen.getImage(), getX(), getY(), getSize(), getSize(), null);
+        g.drawImage(imagen.getImage(), x, y, getSize(), getSize(), null);
     }
 }

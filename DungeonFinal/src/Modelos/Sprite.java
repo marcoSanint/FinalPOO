@@ -11,13 +11,13 @@ import java.awt.Graphics;
  * @author Marco Sanint
  */
 public abstract class Sprite {
-    private int x;
-    private int y;
-    private int Size;
-    private int step = 40;
+    protected int x;
+    protected int y;
+    protected int Size;
+    protected int step = 40;
     
-    private Dimensionable area;
-    private Drawable drawable;
+    protected Dimensionable area;
+    protected Drawable drawable;
 
     public Sprite(int x, int y) {
         this.x = x;

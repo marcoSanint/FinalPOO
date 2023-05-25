@@ -27,7 +27,7 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
     private Drawable drawable;
     
     private Yellow yellow;
-    private List<Monster> monsters;
+    private List<Monster> monsters = new ArrayList<>();
     private List<Potion> potions;
     private List<Key> keys;
     
@@ -36,10 +36,9 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
         yellow = new Yellow(2*Size, 2*Size);
         yellow.setArea(this);
         yellow.setDrawable(this);
-        monsters = new ArrayList<>();
-        //generateRandomKeys(numRows);
+        generateMonsters();
     }
-    
+
     public int[][] getDungeon(){
         int dungeon[][] = 
         {   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -58,24 +57,7 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
         };
         return dungeon;
     }
-//    public int[][] getDungeon(){
-//        int dungeon[][] = 
-//        {   {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-//            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//            {1,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//            {1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1},
-//            {1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1},
-//            {1,0,1,0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,1},
-//            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
-//            {1,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1,0,0,0,0,0,1},
-//            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1},
-//            {1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//            {1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//            {1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
-//            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-//        };
-//        return dungeon;
-//    }
+
     
     public void draw(Graphics g){
         
@@ -87,10 +69,6 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
             for(row = 0; row < numRows; row++){
                 for(column=0; column < numColumns; column ++){
                     if (dungeon[row][column] == 1){
-    //                    g.setColor(Color.BLUE);
-    //                    g.fillRect(getColumn()*40, getRow()*40, getSize(), getSize());
-    //                    g.setColor(Color.BLACK);
-    //                    g.drawRect(getColumn()*40, getRow()*40, getSize(), getSize());
                         ImageIcon imagen=new ImageIcon(getClass().getResource("POO(Wall).png"));         
                         g.setColor(new Color(128,64,0));         
                         g.drawImage(imagen.getImage(), column*40, row*40, Size, Size, null);
@@ -98,35 +76,24 @@ public final class Dungeon extends Sprite implements Drawable, Dimensionable {
                 }
             }
         }catch(ArrayIndexOutOfBoundsException a){
+            
+        }
+        yellow.draw(g);
+        for( Monster a: monsters){
+            a.draw(g);
         }
         
     }
     
     
-    //Repartir de forma aleatoria las llaves en los espacions vacios
-//    public void generateRandomKeys(int numKeys) {
-//        Random random = new Random();
-//        int count = 0;
-//        while (count < numKeys) {
-//            int x = random.nextInt(getNumColumns());
-//            int y = random.nextInt(getNumRows());
-//
-//            if (getDungeon()[y][x] == 0) {
-//                keys.add(new Key(x, y));
-//                count++;
-//            }
-//        }
-//
-//    }
     
     //Repartir los mosntruos
     public void generateMonsters() {
-
-        monsters.add(new Slime(8*Size, 5*Size, yellow));
-        monsters.add(new Spider(12*Size, 10*Size, yellow));
-        monsters.add(new Eye(2*Size, 9*Size, yellow));
-        monsters.add(new Doc(5*Size, 7*Size, yellow));
-
+        int x = (int) (Math.random()* getWidth()) - 40;
+        int y = (int) (Math.random()* getHeight()) - 40;
+        Slime slime = new Slime(x, y, yellow);
+        monsters.add(slime);
+        System.out.println("d");
     }
     
     //Agregar habilidad al laberinto
